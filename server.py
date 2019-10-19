@@ -3,10 +3,16 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
+def home():
     return render_template('index.html')
 
 
-@app.route('/blog')
-def blog():
-    return 'Hello, Blog!'
+@app.route('/<string:page_name>')
+def html_page(page_name):
+    return render_template(page_name)
+
+
+@app.route('/submit_form', methods=['POST', 'GET'])
+def submit_form():
+
+    return 'form submitted!'
